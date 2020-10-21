@@ -1,0 +1,79 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+env:
+  TERM: alacritty 
+
+#window:
+  title: Alacritty
+
+  # GTK theme variant (Linux/BSD only)
+  #
+  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
+  # Set this to `None` to use the default theme variant.
+  #gtk_theme_variant: None
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  #multiplier: 3
+
+font:
+  normal:
+    family: Meslo LG M DZ 
+    style: Regular
+
+  bold:
+    family: Meslo LG M DZ 
+    style: Bold
+
+  italic:
+    family: Meslo LG M DZ
+    style: Italic
+
+  bold_italic:
+    family: Meslo LG M DZ 
+    style: Bold Italic
+
+  size: 10.0
+
+# Colors (!Night Owl by DelusionalOptimist)
+colors:
+  # Default colors
+  primary:
+    background: '0x002636'
+    foreground: '0xF6F5FF'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x000000'
+    cursor: '0x5730C2'
+
+  # Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xEf5350'
+    green:   '0x22da6e'
+    yellow:  '0xaddb67'
+    blue:    '0x82aaff'
+    magenta: '0xc792ea'
+    cyan:    '0x21c7a8'
+    white:   '0xffffff'
+
+  # Bright colors
+  bright:
+    black:   '0x575656'
+    red:     '0xef5350'
+    green:   '0x22da6e'
+    yellow:  '0xffeb95'
+    blue:    '0x82aaff'
+    magenta: '0xc792ea'
+    cyan:    '0x7fdbca'
+    white:   '0xffffff'
+
+shell:
+  program: /bin/zsh
+
