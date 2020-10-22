@@ -10,7 +10,7 @@ Plug 'norcalli/typeracer.nvim'
 Plug '~/Work/nvim-scratchpad'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround',
+Plug 'tpope/vim-surround'
 Plug 'vim-conf-live/pres.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -20,7 +20,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
-" 
+"LANGUAGE SPECIFIC
+"RUST
+Plug 'mhinz/vim-crates'
 
 set nocompatible
 
@@ -60,7 +62,7 @@ if exists('+termguicolors')
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme night-owl 
+colorscheme night-owl
 
 
 set completeopt+=menuone
