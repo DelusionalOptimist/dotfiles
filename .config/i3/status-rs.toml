@@ -1,15 +1,12 @@
 [theme]
 name = "modern"
-[theme.overrides]
-#separator = "\ue0b6"
 [icons]
 name = "awesome5"
 
 [[block]]
-block = "music"
-buttons = ["play", "next"]
-player = "spotify"
-[icons.overrides]
+block="music"
+buttons=["play", "next"]
+max_width=8
 
 [[block]]
 block = "memory"
