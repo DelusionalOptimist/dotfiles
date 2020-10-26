@@ -44,7 +44,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x002636'
+    background: '0x103030'
     foreground: '0xF6F5FF'
 
   # Colors the cursor will use if `custom_cursor_colors` is true

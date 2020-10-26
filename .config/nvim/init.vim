@@ -7,7 +7,6 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'tpope/vim-unimpaired'
 Plug 'itchyny/lightline.vim'
 Plug 'norcalli/typeracer.nvim'
-Plug '~/Work/nvim-scratchpad'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -17,12 +16,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-call plug#end()
-
-"LANGUAGE SPECIFIC
-"RUST
 Plug 'mhinz/vim-crates'
+call plug#end()
 
 set nocompatible
 

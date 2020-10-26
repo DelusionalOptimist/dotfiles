@@ -71,6 +71,9 @@ ENABLE_CORRECTION="true"
 plugins=(
 	git
 	archlinux
+  rustup
+  rust
+  jsontools
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -105,5 +108,7 @@ alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
 alias vim=nvim
 export EDITOR="/usr/bin/vim"
 export VISUAL="/usr/bin/vi"
+
+export PATH="$PATH:$HOME/.local/bin"
 neofetch
 

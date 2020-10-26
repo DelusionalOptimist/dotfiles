@@ -48,7 +48,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xset r rate 500 30
+xset r rate 500 33
 hsetroot -solid "#61c9b4"
 picom &
 exec i3
