@@ -1,16 +1,13 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-grepper'
-Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-startify'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'tpope/vim-unimpaired'
 Plug 'itchyny/lightline.vim'
-Plug 'norcalli/typeracer.nvim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-conf-live/pres.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'arcticicestudio/nord-vim'
