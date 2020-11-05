@@ -27,6 +27,14 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # take a screenshot with scrot
 bindsym Print exec --no-startup-id scrot -s ~/Pictures/%Y-%m-%d-%T-screenshot.png
 
+# launch spotify webapp in firefox
+bindsym $mod+Shift+s exec --no-startup-id "firefox -new-window https://open.spotify.com"
+
+# keybindings for media player control (only for interfaces which implement MediaPlayer2 Interface)
+bindsym $mod+Shift+F1 exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym $mod+Shift+F2 exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym $mod+Shift+F3 exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
