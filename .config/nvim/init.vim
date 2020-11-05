@@ -37,12 +37,10 @@ set hlsearch
 syntax on
 
 nmap <leader>gg :Grepper<CR>
-inoremap jk <esc>
 noremap <Up> <nop>
 noremap <Left> <nop>
 noremap <Down> <nop>
 noremap <Right> <nop>
-inoremap <esc> <nop>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>tv :tab new ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
