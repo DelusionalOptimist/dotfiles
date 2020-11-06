@@ -32,6 +32,6 @@ device = "BAT1"
 
 [[block]]
 block = "time"
-interval = 50
+interval = 1
 format = "%a %d/%m %R"
 
