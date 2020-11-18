@@ -105,11 +105,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/"
+PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/"
 
 alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
 alias vim=nvim
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/vi"
 
 neofetch

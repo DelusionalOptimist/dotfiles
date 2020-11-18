@@ -7,6 +7,9 @@ name = "awesome5"
 block="music"
 buttons=["play", "next"]
 max_width=8
+hide_when_empty=true
+on_collapsed_click="spotify"
+on_click="dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2'| cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Raise"
 
 [[block]]
 block = "memory"
