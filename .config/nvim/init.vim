@@ -10,7 +10,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-crates'
@@ -33,9 +32,15 @@ set listchars=tab:>-
 set showcmd
 set incsearch
 set hlsearch
+set mouse=a
+set clipboard=unnamedplus
+set scrolloff=10
+set sidescrolloff=15
+set sidescroll=1
 
 syntax on
 
+let mapleader="\<space>"
 nmap <leader>gg :Grepper<CR>
 noremap <Up> <nop>
 noremap <Left> <nop>
@@ -45,7 +50,9 @@ nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>tv :tab new ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader><space> :silent execute "nohlsearch"<cr>
-nnoremap ts :%s/\s\+$//e<cr>
+nnoremap <leader>ts :%s/\s\+$//e<cr>
+map <C-p> :Files<cr>
+nmap <leader>w :update<cr>
 
 if exists('+termguicolors')
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -57,7 +64,6 @@ colorscheme night-owl
 
 set completeopt+=menuone
 set completeopt+=noselect
-set shortmess+=c   " Shut off completion messages
 let g:mucomplete#enable_auto_at_startup = 1
 
 if !(&filetype == "txt")
