@@ -24,6 +24,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+bindsym $mod+Shift+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 # take a screenshot with scrot
 bindsym Print exec --no-startup-id scrot -s ~/Pictures/%Y-%m-%d-%T-screenshot.png
 
@@ -184,7 +185,7 @@ default_floating_border none
 bar
 {
         status_command /usr/bin/i3status-rs ~/.config/i3/status-rs.toml
-        font pango:MenloForPowerline, FontAwesome5Free 15 Regular
+        font pango:SourceCodePro, FontAwesome5Free Bold Italic 12.47
         workspace_min_width 50
         colors {
             	separator #000000
@@ -197,6 +198,7 @@ bar
         }
 }
 
+workspace_auto_back_and_forth yes
 client.focused #555555 #555555 #ffffff #2e9ef4     #e38400
 bindsym $mod+Ctrl+m move scratchpad
 bindsym $mod+Ctrl+a scratchpad show

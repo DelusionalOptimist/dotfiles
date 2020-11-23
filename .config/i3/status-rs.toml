@@ -4,6 +4,10 @@ name = "modern"
 name = "awesome5"
 
 [[block]]
+block = "focused_window"
+show_marks = "visible"
+
+[[block]]
 block="music"
 buttons=["play", "next"]
 max_width=8
@@ -28,6 +32,7 @@ format = "{1m}"
 
 [[block]]
 block = "sound"
+on_click = "alacritty -e alsamixer"
 
 [[block]]
 block = "battery"
@@ -35,6 +40,4 @@ device = "BAT1"
 
 [[block]]
 block = "time"
-interval = 1
 format = "%a %d/%m %R"
-
