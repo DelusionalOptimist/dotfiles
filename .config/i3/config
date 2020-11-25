@@ -2,9 +2,9 @@
 set $mod Mod4
 
 # Increase backlight
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 # Decrease backlight
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.

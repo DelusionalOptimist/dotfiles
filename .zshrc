@@ -110,7 +110,7 @@ PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_1
 alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
 alias vim=nvim
 export EDITOR="/usr/bin/nvim"
-export VISUAL="/usr/bin/vi"
+export VISUAL="/usr/bin/nvim"
 
 neofetch
 
