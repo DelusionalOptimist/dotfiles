@@ -8,7 +8,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Meslo LG L DZ 12
+font pango:Meslo LG L DZ Bold 10
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -176,7 +176,6 @@ mode "resize" {
 
 }
 bindsym $mod+r mode "resize"
-default_border pixel 2
 default_floating_border none
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -185,7 +184,7 @@ default_floating_border none
 bar
 {
         status_command /usr/bin/i3status-rs ~/.config/i3/status-rs.toml
-        font pango:SourceCodePro, FontAwesome5Free Bold Italic 12.47
+        font pango:SourceCodePro, FontAwesome5Free Bold Italic 10.47
         workspace_min_width 50
         colors {
             	separator #000000

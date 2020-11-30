@@ -4,8 +4,12 @@ name = "modern"
 name = "awesome5"
 
 [[block]]
-block = "focused_window"
-show_marks = "visible"
+block = "kdeconnect"
+format_disconnected = "Disconnected"
+
+[[block]]
+block = "docker"
+format = "{running} {images}"
 
 [[block]]
 block="music"
