@@ -30,8 +30,14 @@ bindsym $mod+Ctrl+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK
 bindsym $mod+Ctrl+backslash exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Shift+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-# take a screenshot with scrot
-bindsym Print exec --no-startup-id scrot -s ~/Pictures/%Y-%m-%d-%T-screenshot.png
+# take a screenshot with shotgun
+bindsym $mod+p exec --no-startup-id shotgun ~/Pictures/Screenshots/$(date +%s).png
+
+# take an interactive screenshot with flameshot
+bindsym $mod+Shift+p exec --no-startup-id sleep 2 && flameshot gui
+
+# use textshot to find text on the screen
+bindsym $mod+o exec --no-startup-id sleep 3 && python3 $HOME/builds/textshot/textshot.py
 
 # launch spotify webapp in firefox
 bindsym $mod+Shift+s exec --no-startup-id "firefox -new-window https://open.spotify.com"
