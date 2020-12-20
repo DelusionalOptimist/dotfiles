@@ -1,11 +1,11 @@
 configuration {
   //VIM LIKE KEYBINDINGS
-  kb-row-up:                      "Up,Control+k,ISO_Left_Tab";
-  kb-row-down:                    "Down,Control+j";
-  kb-accept-entry:                "Control+m,Return,KP_Enter";
-  kb-remove-to-eol:               "Control+Shift+e";
-  kb-mode-next:                   "Shift+Right,Control+Tab,Control+l";
-  kb-mode-previous:               "Shift+Left,Control+ISO_Left_Tab,Control+h";
+  kb-row-up:                      "Up,Super+k,ISO_Left_Tab";
+  kb-row-down:                    "Down,Super+j";
+  kb-accept-entry:                "Super+m,Return,KP_Enter";
+  kb-remove-to-eol:               "Super+Shift+e";
+  kb-mode-next:                   "Shift+Right,Super+Tab,Super+l";
+  kb-mode-previous:               "Shift+Left,Super+ISO_Left_Tab,Super+h";
   kb-remove-char-back:            "BackSpace";
 
   //COMMAND LINE OPTIONS

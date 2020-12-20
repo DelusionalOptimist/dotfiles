@@ -28,7 +28,7 @@ entry {
 }
 
 listview {
-  cycle: false;
+  cycle: true;
   spacing: 2px;
 }
 

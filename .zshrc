@@ -74,6 +74,7 @@ plugins=(
   rustup
   rust
   jsontools
+  docker
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -105,7 +106,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/"
+PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin"
 
 alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
 alias vim=nvim
@@ -113,4 +114,4 @@ export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 
 neofetch
-
+compinit
