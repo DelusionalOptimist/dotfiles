@@ -149,6 +149,17 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# switch worksapce
+bindsym $mod+m workspace next
+bindsym $mod+n workspace prev
+
+# use mouse to switch workspaces
+bindsym --whole-window --exclude-titlebar $mod+button4 workspace prev_on_output
+bindsym --whole-window --exclude-titlebar $mod+button5 workspace next_on_output
+
+# go to the last workspace
+bindsym $mod+b workspace back_and_forth
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -207,9 +218,12 @@ bar
             	inactive_workspace #333333 #333333 #e38400
             	urgent_workspace #2f343a #900000 #ffffff
         }
+        bindsym button4 workspace prev_on_output
+        bindsym button5 workspace next_on_output
 }
 
 workspace_auto_back_and_forth yes
-client.focused #555555 #555555 #ffffff #2e9ef4     #e38400
+client.focused #ef55350 #333333 #ffffff #2e9ef4 #ef5350
+client.unfocused #ef55350 #011627 #ef5350 #2e9ef4 #222d32
 bindsym $mod+Ctrl+m move scratchpad
 bindsym $mod+Ctrl+a scratchpad show
