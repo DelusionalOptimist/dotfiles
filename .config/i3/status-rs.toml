@@ -36,6 +36,14 @@ format = "{1m}"
 
 [[block]]
 block = "sound"
+format = "{volume}%"
+device_kind = "source"
+on_click = "alacritty -e alsamixer"
+
+[[block]]
+block = "sound"
+format = "{volume}%"
+device_kind = "sink"
 on_click = "alacritty -e alsamixer"
 
 [[block]]

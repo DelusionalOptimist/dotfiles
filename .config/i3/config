@@ -28,7 +28,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+Ctrl+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym $mod+Ctrl+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym $mod+Ctrl+backslash exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+Shift+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym $mod+Ctrl+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # take a screenshot with shotgun
 bindsym $mod+p exec --no-startup-id shotgun ~/Pictures/Screenshots/$(date +%s).png
@@ -37,10 +37,12 @@ bindsym $mod+p exec --no-startup-id shotgun ~/Pictures/Screenshots/$(date +%s).p
 bindsym $mod+Shift+p exec --no-startup-id sleep 2 && flameshot gui
 
 # use textshot to find text on the screen
-bindsym $mod+o exec --no-startup-id sleep 3 && python3 $HOME/builds/textshot/textshot.py
+bindsym $mod+o exec --no-startup-id sleep 2 && python3 $HOME/builds/textshot/textshot.py
 
-# launch spotify webapp in firefox
+# launch spotify webapp in firefox, move it to scratchpad and resize (that's how I like it :P)
 bindsym $mod+Shift+s exec --no-startup-id "firefox -new-window https://open.spotify.com"
+for_window [title="Spotify"] move scratchpad
+for_window [title="Spotify"] resize set 996 720
 
 # keybindings for media player control (only for interfaces which implement MediaPlayer2 Interface)
 bindsym $mod+Ctrl+bracketleft exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
@@ -222,8 +224,8 @@ bar
         bindsym button5 workspace next_on_output
 }
 
-workspace_auto_back_and_forth yes
-client.focused #ef55350 #333333 #ffffff #2e9ef4 #ef5350
-client.unfocused #ef55350 #011627 #ef5350 #2e9ef4 #222d32
-bindsym $mod+Ctrl+m move scratchpad
-bindsym $mod+Ctrl+a scratchpad show
+#workspace_auto_back_and_forth yes
+client.focused #ef5535 #333333 #ffffff #2e9ef4 #ef5350
+client.unfocused #ef5535 #011627 #ef5350 #2e9ef4 #222d32
+bindsym $mod+Shift+m move scratchpad
+bindsym $mod+Shift+a scratchpad show
