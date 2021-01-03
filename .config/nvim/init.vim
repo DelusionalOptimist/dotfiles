@@ -1,29 +1,59 @@
+" Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'mhinz/vim-grepper'
-Plug 'mhinz/vim-startify'
-Plug 'lifepillar/vim-mucomplete'
+" god plugins
 Plug 'tpope/vim-unimpaired'
-Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf.vim'
+
+" session restore
+Plug 'tpope/vim-obsession'
+
+" for git
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'haishanh/night-owl.vim'
+
+" for using tab in autocompletion suggestions
+Plug 'lifepillar/vim-mucomplete'
+" autocompletion engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" themes
+Plug 'dracula/vim',{'as':'dracula'}
+Plug 'morhetz/gruvbox'
+Plug 'haishanh/night-owl.vim'
+
+" file/language specific
 Plug 'mhinz/vim-crates'
+Plug 'fatih/vim-go'
+
+" fancy stuff
+Plug 'mhinz/vim-startify'
+Plug 'itchyny/lightline.vim'
+
+" Plugins whose importance I have not realized yet
+Plug 'mhinz/vim-grepper'
+
 call plug#end()
 
-set nocompatible
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_doc_keywordprg_enabled = 0
+
 
 " --General
+set nocompatible
 set backspace=indent,eol,start
 set ruler
 set number
 set relativenumber
 set autoread
-set expandtab
+set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -38,22 +68,28 @@ set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
 set hidden
+set termguicolors
+set cursorline
 
 syntax on
 
+" leader key mappings
 let mapleader="\<space>"
 nmap <leader>gg :Grepper<CR>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
-nnoremap <leader>tv :tab new ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader><space> :silent execute "nohlsearch"<cr>
 nnoremap <leader>ts :%s/\s\+$//e<cr>
 nnoremap <leader>w :update<cr>
 nnoremap <leader>q :q<cr>
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nnoremap <leader>o :Obsess<cr>
+nnoremap <leader>o! :Obsess!<cr>
+
+" coc specific configuration
+nmap <silent> gd :sp<CR><Plug>(coc-definition)
+nmap <silent> gy :sp<CR><Plug>(coc-type-definition)
+nmap <silent> gi :sp<CR><Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -81,23 +117,19 @@ noremap <Up> <nop>
 noremap <Left> <nop>
 noremap <Down> <nop>
 noremap <Right> <nop>
+inoremap jk <esc>
+
 map <C-p> :Files<cr>
+map <C-m> :Marks<cr>
 
-
-if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-colorscheme night-owl
-
+colorscheme gruvbox
+set background=light
 
 set completeopt+=menuone
 set completeopt+=noselect
 let g:mucomplete#enable_auto_at_startup = 1
 
 if !(&filetype == "txt")
-  highlight WhiteSpaces ctermbg=green guibg=#55aa55
-  match WhiteSpaces /\s\+$/
+	highlight WhiteSpaces ctermbg=green guibg=#55aa55
+	match WhiteSpaces /\s\+$/
 endif
-
