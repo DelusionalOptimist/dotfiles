@@ -16,7 +16,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " for using tab in autocompletion suggestions
-Plug 'lifepillar/vim-mucomplete'
+"Plug 'lifepillar/vim-mucomplete'
 " autocompletion engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -26,6 +26,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'dracula/vim',{'as':'dracula'}
 Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
+Plug 'joshdick/onedark.vim'
 
 " file/language specific
 Plug 'mhinz/vim-crates'
@@ -51,7 +52,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set list
-set listchars=tab:>-
+set listchars=tab:\|\ 
 set showcmd
 set incsearch
 set hlsearch
@@ -145,10 +146,10 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " chained fallback completion
-let g:mucomplete#enable_auto_at_startup = 1
+"let g:mucomplete#enable_auto_at_startup = 1
 
 "current theme
-colorscheme gruvbox
+colorscheme onedark
 
 " highlight whitespaces
 if !(&filetype == "txt")
