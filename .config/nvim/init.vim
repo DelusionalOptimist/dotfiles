@@ -12,10 +12,15 @@ Plug 'tpope/vim-obsession'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
+" Rich syntax-highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " for using tab in autocompletion suggestions
 Plug 'lifepillar/vim-mucomplete'
 " autocompletion engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'MattesGroeger/vim-bookmarks'
 
 " themes
 Plug 'dracula/vim',{'as':'dracula'}
@@ -24,7 +29,6 @@ Plug 'haishanh/night-owl.vim'
 
 " file/language specific
 Plug 'mhinz/vim-crates'
-Plug 'fatih/vim-go'
 
 " fancy stuff
 Plug 'mhinz/vim-startify'
@@ -34,17 +38,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-grepper'
 
 call plug#end()
-
-" Go syntax highlighting
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_doc_keywordprg_enabled = 0
-
 
 " --General
 set nocompatible
@@ -70,6 +63,9 @@ set sidescroll=1
 set hidden
 set termguicolors
 set cursorline
+set shortmess=c
+set foldmethod=expr
+set completeopt+=menuone,noselect
 
 syntax on
 
@@ -83,8 +79,43 @@ nnoremap <leader>ts :%s/\s\+$//e<cr>
 nnoremap <leader>w :update<cr>
 nnoremap <leader>q :q<cr>
 
+" general keymaps
+noremap <Up> <nop>
+noremap <Left> <nop>
+noremap <Down> <nop>
+noremap <Right> <nop>
+inoremap jk <esc>
+nmap <silent> <c-k> :wincmd k <cr>
+nmap <silent> <c-j> :wincmd j <cr>
+nmap <silent> <c-h> :wincmd h <cr>
+nmap <silent> <c-l> :wincmd l <cr>
+
+"keymaps for plugins
 nnoremap <leader>o :Obsess<cr>
 nnoremap <leader>o! :Obsess!<cr>
+
+map <C-p> :Files<cr>
+map <C-m> :Marks<cr>
+
+" treesitter config
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = "maintained",
+	highlight = {
+		enable = true,
+	},
+	indent = {
+		enable = true,
+	},
+	incremental_selection = {
+		enable = true,
+	}
+}
+EOF
+
+" vim-bookmark config
+let g:bookmark_auto_close = 1
+let g:bookmark_location_list = 1
 
 " coc specific configuration
 nmap <silent> gd :sp<CR><Plug>(coc-definition)
@@ -113,22 +144,13 @@ vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-noremap <Up> <nop>
-noremap <Left> <nop>
-noremap <Down> <nop>
-noremap <Right> <nop>
-inoremap jk <esc>
-
-map <C-p> :Files<cr>
-map <C-m> :Marks<cr>
-
-colorscheme gruvbox
-set background=light
-
-set completeopt+=menuone
-set completeopt+=noselect
+" chained fallback completion
 let g:mucomplete#enable_auto_at_startup = 1
 
+"current theme
+colorscheme gruvbox
+
+" highlight whitespaces
 if !(&filetype == "txt")
 	highlight WhiteSpaces ctermbg=green guibg=#55aa55
 	match WhiteSpaces /\s\+$/
