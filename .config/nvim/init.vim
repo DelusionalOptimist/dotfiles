@@ -15,8 +15,6 @@ Plug 'tpope/vim-fugitive'
 " Rich syntax-highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" for using tab in autocompletion suggestions
-"Plug 'lifepillar/vim-mucomplete'
 " autocompletion engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -80,6 +78,15 @@ nnoremap <leader>ts :%s/\s\+$//e<cr>
 nnoremap <leader>w :update<cr>
 nnoremap <leader>q :q<cr>
 
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+"TODO: configure these better
+"inoremap [ []<left>
+"inoremap { {}<left>
+"inoremap {<CR> {<CR>}<ESC>0
+"inoremap {;<CR> {<CR>};<ESC>0
+
 " general keymaps
 noremap <Up> <nop>
 noremap <Left> <nop>
@@ -141,6 +148,18 @@ inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float
 inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
