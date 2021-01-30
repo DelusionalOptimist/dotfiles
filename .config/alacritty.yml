@@ -23,11 +23,11 @@ scrolling:
 
 font:
   normal:
-    family: Meslo LG M DZ 
+    family: Meslo LG M DZ
     style: Regular
 
   bold:
-    family: Meslo LG M DZ 
+    family: Meslo LG M DZ
     style: Bold
 
   italic:
@@ -35,44 +35,180 @@ font:
     style: Italic
 
   bold_italic:
-    family: Meslo LG M DZ 
+    family: Meslo LG M DZ
     style: Bold Italic
 
   size: 10.0
 
-# Colors (!Night Owl by DelusionalOptimist)
-colors:
-  # Default colors
-  primary:
-    background: '0x222D32'
-    foreground: '0xF6F5FF'
+schemes:
+  Dard: &dark
+    # Default colors
+    primary:
+      background: '0x222D32'
+      foreground: '0xF6F5FF'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x000000'
-    cursor: '0x5730C2'
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: '0x000000'
+      cursor: '0x5730C2'
 
-  # Normal colors
-  normal:
-    black:   '0x000000'
-    red:     '0xEf5350'
-    green:   '0x22da6e'
-    yellow:  '0xaddb67'
-    blue:    '0x82aaff'
-    magenta: '0xc792ea'
-    cyan:    '0x21c7a8'
-    white:   '0xffffff'
+    # Normal colors
+    normal:
+      black:   '0x000000'
+      red:     '0xEf5350'
+      green:   '0x22da6e'
+      yellow:  '0xaddb67'
+      blue:    '0x82aaff'
+      magenta: '0xc792ea'
+      cyan:    '0x21c7a8'
+      white:   '0xffffff'
 
-  # Bright colors
-  bright:
-    black:   '0x575656'
-    red:     '0xef5350'
-    green:   '0x22da6e'
-    yellow:  '0xffeb95'
-    blue:    '0x82aaff'
-    magenta: '0xc792ea'
-    cyan:    '0x7fdbca'
-    white:   '0xffffff'
+    # Bright colors
+    bright:
+      black:   '0x575656'
+      red:     '0xef5350'
+      green:   '0x22da6e'
+      yellow:  '0xffeb95'
+      blue:    '0x82aaff'
+      magenta: '0xc792ea'
+      cyan:    '0x7fdbca'
+      white:   '0xffffff'
+
+  Gruvbox Light: &gb-light
+    primary:
+      # hard contrast: background = '#f9f5d7'
+      background: '#fbf1c7'
+      # soft contrast: background = '#f2e5bc'
+      foreground: '#3c3836'
+
+    # Normal colors
+    normal:
+      black:   '#fbf1c7'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#7c6f64'
+
+    # Bright colors
+    bright:
+      black:   '#928374'
+      red:     '#9d0006'
+      green:   '#79740e'
+      yellow:  '#b57614'
+      blue:    '#076678'
+      magenta: '#8f3f71'
+      cyan:    '#427b58'
+      white:   '#3c3836'
+
+  Gruvbox Dark: &gb-dark
+    # Default colors
+    primary:
+      # hard contrast: background = '#1d2021'
+      background: '#282828'
+      # soft contrast: background = '#32302f'
+      foreground: '#ebdbb2'
+
+    # Normal colors
+    normal:
+      black:   '#282828'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#a89984'
+
+    # Bright colors
+    bright:
+      black:   '#928374'
+      red:     '#fb4934'
+      green:   '#b8bb26'
+      yellow:  '#fabd2f'
+      blue:    '#83a598'
+      magenta: '#d3869b'
+      cyan:    '#8ec07c'
+      white:   '#ebdbb2'
+
+  Pencil_Light: &light
+    # Default Colors
+    primary:
+      background: '#f1f1f1'
+      foreground: '#424242'
+    # Normal colors
+    normal:
+      black:   '#212121'
+      red:     '#c30771'
+      green:   '#10a778'
+      yellow:  '#a89c14'
+      blue:    '#008ec4'
+      magenta: '#523c79'
+      cyan:    '#20a5ba'
+      white:   '#e0e0e0'
+    # Bright colors
+    bright:
+      black:   '#212121'
+      red:     '#fb007a'
+      green:   '#5fd7af'
+      yellow:  '#f3e430'
+      blue:    '#20bbfc'
+      magenta: '#6855de'
+      cyan:    '#4fb8cc'
+      white:   '#f1f1f1'
+
+  dracula: &dracula
+    # Default colors
+    primary:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+
+    # Normal colors
+    normal:
+      black:   '#000000'
+      red:     '#ff5555'
+      green:   '#50fa7b'
+      yellow:  '#f1fa8c'
+      blue:    '#caa9fa'
+      magenta: '#ff79c6'
+      cyan:    '#8be9fd'
+      white:   '#bfbfbf'
+
+    # Bright colors
+    bright:
+      black:   '#575b70'
+      red:     '#ff6e67'
+      green:   '#5af78e'
+      yellow:  '#f4f99d'
+      blue:    '#caa9fa'
+      magenta: '#ff92d0'
+      cyan:    '#9aedfe'
+      white:   '#e6e6e6'
+
+  OneDark: &one_dark
+    primary:
+      background: '#282c34'
+      foreground: '#abb2bf'
+    cursor:
+      text:       CellBackground
+      cursor:     '#528bff' # syntax-cursor-color
+    selection:
+      text:       CellForeground
+      background: '#3e4451' # syntax-selection-color
+    normal:
+      black:      '#5c6370' # mono-3
+      red:        '#e06c75' # red 1
+      green:      '#98c379'
+      yellow:     '#e5c07b' # orange 2
+      blue:       '#61afef'
+      magenta:    '#c678dd'
+      cyan:       '#56b6c2'
+      white:      '#828997' # mono-2
+
+
+colors: *one_dark
 
 shell:
   program: /bin/zsh

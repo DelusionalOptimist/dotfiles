@@ -34,5 +34,7 @@ fi
 
 xset r rate 500 33
 hsetroot -solid "#61c9b4"
+setxkbmap -option ctrl:nocaps
+batsignal -b -n BAT1 -w 55 -e
 picom &
 exec i3

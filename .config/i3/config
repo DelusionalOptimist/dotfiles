@@ -56,6 +56,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 
+# floating terminal
+bindsym $mod+Ctrl+Return exec --no-startup-id alacritty -t "floating_term"
+for_window [title = "floating_term"] floating enable, resize set 800 320
+
 # start browser
 bindsym $mod+Shift+Return exec --no-startup-id firefox
 
@@ -181,8 +185,8 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -200,16 +204,18 @@ mode "resize" {
         bindsym Mod1+r mode "default"
 
 }
+default_border pixel 2
 bindsym $mod+r mode "resize"
 default_floating_border none
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
+bindsym $mod+i bar mode toggle
 bar
 {
         status_command /usr/bin/i3status-rs ~/.config/i3/status-rs.toml
-        font pango:SourceCodePro, FontAwesome5Free Bold Italic 10.47
+        font pango:SourceCodePro, FontAwesome5Free Bold 10
         workspace_min_width 50
         colors {
             	separator #000000

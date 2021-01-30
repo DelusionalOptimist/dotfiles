@@ -4,20 +4,20 @@ name = "modern"
 name = "awesome5"
 
 [[block]]
-block = "kdeconnect"
-format_disconnected = "Disconnected"
-
-[[block]]
 block = "docker"
 format = "{running} {images}"
+[[block]]
+block = "custom"
+command = 'vnstat --oneline --iface enp0s20f0u4+wlp3s0 | cut -d ";" -f6'
+interval = 30
 
 [[block]]
 block="music"
 buttons=["play", "next"]
 max_width=8
 hide_when_empty=true
-on_collapsed_click="spotify"
-on_click="dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2'| cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Raise"
+on_click="i3-msg scratchpad show"
+#on_click="dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2'| cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Raise"
 
 [[block]]
 block = "memory"

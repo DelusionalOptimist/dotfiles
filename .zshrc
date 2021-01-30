@@ -106,12 +106,21 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin"
+export GOPATH="$HOME/go"
+PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin:$GOPATH/bin"
 
 alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
 alias vim=nvim
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
+# export BAT_THEME="gruvbox-light"
+export FZF_DEFAULT_OPTS="--bind 'ctrl-f':preview-down,'ctrl-b':preview-up,'ctrl-space':toggle-preview-wrap --cycle"
+
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey "^[" up-line-or-beginning-search
 
 neofetch
 compinit
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
