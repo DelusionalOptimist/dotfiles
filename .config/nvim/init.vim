@@ -33,6 +33,9 @@ Plug 'mhinz/vim-crates'
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 
+" I don't use this much
+Plug 'preservim/tagbar'
+
 " Plugins whose importance I have not realized yet
 Plug 'mhinz/vim-grepper'
 
@@ -104,6 +107,8 @@ nnoremap <leader>o! :Obsess!<cr>
 
 map <C-p> :Files<cr>
 map <C-m> :Marks<cr>
+map <leader>bt :BTags<cr>
+map <leader>t :Tags<cr>
 
 " treesitter config
 lua <<EOF
@@ -120,6 +125,38 @@ require'nvim-treesitter.configs'.setup {
 	}
 }
 EOF
+
+" gotags config for tagbar
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
+let g:netrw_liststyle = 3
+nnoremap <Leader>T :TagbarToggle<CR><C-W>l
 
 " vim-bookmark config
 let g:bookmark_auto_close = 1
@@ -168,7 +205,8 @@ nmap <leader>f  <Plug>(coc-format-selected)
 "let g:mucomplete#enable_auto_at_startup = 1
 
 "current theme
-colorscheme onedark
+colorscheme gruvbox
+"set bg=dark
 
 " highlight whitespaces
 if !(&filetype == "txt")
