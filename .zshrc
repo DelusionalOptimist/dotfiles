@@ -111,6 +111,7 @@ PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_1
 
 alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
 alias vim=nvim
+alias vimr="nvim -R"
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 # export BAT_THEME="gruvbox-light"
@@ -119,6 +120,12 @@ export FZF_DEFAULT_OPTS="--bind 'ctrl-f':preview-down,'ctrl-b':preview-up,'ctrl-
 autoload -U up-line-or-beginning-search
 zle -N up-line-or-beginning-search
 bindkey "^[" up-line-or-beginning-search
+
+echo "  ___      _         _               _  ___       _   _       _    _   "
+echo " |   \ ___| |_  _ __(_)___ _ _  __ _| |/ _ \ _ __| |_(_)_ __ (_)__| |_ "
+echo " | |) / -_) | || (_-< / _ \ ' \/ _\` | | (_) | '_ \  _| | '  \| (_-<  _|"
+echo " |___/\___|_|\_,_/__/_\___/_||_\__,_|_|\___/| .__/\__|_|_|_|_|_/__/\__|"
+echo "                                            |_|                        "
 
 neofetch
 compinit

@@ -38,7 +38,7 @@ font:
     family: Meslo LG M DZ
     style: Bold Italic
 
-  size: 10.0
+  size: 9.0
 
 schemes:
   Dard: &dark
@@ -133,32 +133,6 @@ schemes:
       cyan:    '#8ec07c'
       white:   '#ebdbb2'
 
-  Pencil_Light: &light
-    # Default Colors
-    primary:
-      background: '#f1f1f1'
-      foreground: '#424242'
-    # Normal colors
-    normal:
-      black:   '#212121'
-      red:     '#c30771'
-      green:   '#10a778'
-      yellow:  '#a89c14'
-      blue:    '#008ec4'
-      magenta: '#523c79'
-      cyan:    '#20a5ba'
-      white:   '#e0e0e0'
-    # Bright colors
-    bright:
-      black:   '#212121'
-      red:     '#fb007a'
-      green:   '#5fd7af'
-      yellow:  '#f3e430'
-      blue:    '#20bbfc'
-      magenta: '#6855de'
-      cyan:    '#4fb8cc'
-      white:   '#f1f1f1'
-
   dracula: &dracula
     # Default colors
     primary:
@@ -187,28 +161,62 @@ schemes:
       cyan:    '#9aedfe'
       white:   '#e6e6e6'
 
-  OneDark: &one_dark
+  Ayu_dark: &ad
+    # Default colors
     primary:
-      background: '#282c34'
-      foreground: '#abb2bf'
-    cursor:
-      text:       CellBackground
-      cursor:     '#528bff' # syntax-cursor-color
-    selection:
-      text:       CellForeground
-      background: '#3e4451' # syntax-selection-color
+      background: '#0A0E14'
+      foreground: '#B3B1AD'
+
+    # Normal colors
     normal:
-      black:      '#5c6370' # mono-3
-      red:        '#e06c75' # red 1
-      green:      '#98c379'
-      yellow:     '#e5c07b' # orange 2
-      blue:       '#61afef'
-      magenta:    '#c678dd'
-      cyan:       '#56b6c2'
-      white:      '#828997' # mono-2
+      black: '#01060E'
+      red: '#EA6C73'
+      green: '#91B362'
+      yellow: '#F9AF4F'
+      blue: '#53BDFA'
+      magenta: '#FAE994'
+      cyan: '#90E1C6'
+      white: '#C7C7C7'
 
+    # Bright colors
+    bright:
+      black: '#686868'
+      red: '#F07178'
+      green: '#C2D94C'
+      yellow: '#FFB454'
+      blue: '#59C2FF'
+      magenta: '#FFEE99'
+      cyan: '#95E6CB'
+      white: '#FFFFFF'
 
-colors: *one_dark
+  nord: &nord
+      # Default colors
+    primary:
+      background: '#2E3440'
+      foreground: '#D8DEE9'
+    # Normal colors
+    normal:
+      black:   '#3B4252'
+      red:     '#BF616A'
+      green:   '#A3BE8C'
+      yellow:  '#EBCB8B'
+      blue:    '#81A1C1'
+      magenta: '#B48EAD'
+      cyan:    '#88C0D0'
+      white:   '#E5E9F0'
+
+    # Bright colors
+    bright:
+      black:   '#4C566A'
+      red:     '#BF616A'
+      green:   '#A3BE8C'
+      yellow:  '#EBCB8B'
+      blue:    '#81A1C1'
+      magenta: '#B48EAD'
+      cyan:    '#8FBCBB'
+      white:   '#ECEFF4'
+
+colors: *gb-dark
 
 shell:
   program: /bin/zsh

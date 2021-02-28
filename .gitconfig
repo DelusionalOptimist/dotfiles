@@ -3,6 +3,9 @@
   name = DelusionalOptimist
   signingkey = D3A77129495A243E
 
+[alias]
+	gclone = !sh -c 'git clone `xclip -o`'
+
 [commit]
   gpgsign = true
 

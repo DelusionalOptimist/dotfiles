@@ -24,7 +24,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'dracula/vim',{'as':'dracula'}
 Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
-Plug 'joshdick/onedark.vim'
 
 " file/language specific
 Plug 'mhinz/vim-crates'
@@ -80,6 +79,7 @@ nnoremap <leader><space> :silent execute "nohlsearch"<cr>
 nnoremap <leader>ts :%s/\s\+$//e<cr>
 nnoremap <leader>w :update<cr>
 nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :q!<cr>
 
 inoremap " ""<left>
 inoremap ' ''<left>
