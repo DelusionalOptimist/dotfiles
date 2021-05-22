@@ -57,7 +57,7 @@ bindsym $mod+Return exec --no-startup-id alacritty
 
 # floating terminal
 bindsym $mod+Ctrl+Return exec --no-startup-id alacritty -t "floating_term"
-for_window [title = "floating_term"] floating enable, resize set 800 320
+for_window [title = "floating_term"] move scratchpad, resize set 800 320, move window position 300px 0px
 
 # start browser
 bindsym $mod+Shift+Return exec --no-startup-id firefox
@@ -231,19 +231,24 @@ bar
         workspace_min_width 50
         colors {
             	separator #000000
-            	background #222D32
-            	statusline #000000
-            	focused_workspace #ffff0f #333333 #ffffff
+            	background #282828
+            	statusline #000001
+            	focused_workspace #d79921 #282828 #d79921
             	active_workspace #333333 #333333 #ffffff
-            	inactive_workspace #333333 #333333 #e38400
-            	urgent_workspace #2f343a #900000 #ffffff
+            	inactive_workspace #282828 #282828 #d65d0e
+            	urgent_workspace #3f343a #fb4934 #ffffff
         }
         bindsym button4 workspace prev_on_output
         bindsym button5 workspace next_on_output
 }
 
 #workspace_auto_back_and_forth yes
-client.focused #ef5535 #333333 #ffffff #2e9ef4 #ef5350
-client.unfocused #ef5535 #011627 #ef5350 #2e9ef4 #222d32
+
+# border colors
+# class									border  backgr. text    indicat child_border
+client.focused					#d79921 #282828 #d79921 #076678 #b57614
+client.focused_inactive #d79921 #3c3836 #d65d0e #484e50 #282828
+client.unfocused				#282828 #282828 #d65d0e #2e9ef4 #282828
+
 bindsym $mod+Shift+m move scratchpad
 bindsym $mod+Shift+a scratchpad show

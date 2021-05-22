@@ -33,7 +33,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xset r rate 500 33
-hsetroot -solid "#61c9b4"
+hsetroot -solid "#504945"
 setxkbmap -option ctrl:nocaps
 batsignal -b -n BAT1 -w 55 -e
 picom &

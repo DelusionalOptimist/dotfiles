@@ -27,8 +27,8 @@ on_click="i3-msg scratchpad show"
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
 
 [[block]]
 block = "cpu"
@@ -41,13 +41,13 @@ format = "{1m}"
 
 [[block]]
 block = "sound"
-format = "{volume}%"
+format = "{volume}"
 device_kind = "source"
 on_click = "alacritty -e alsamixer"
 
 [[block]]
 block = "sound"
-format = "{volume}%"
+format = "{volume}"
 device_kind = "sink"
 on_click = "alacritty -e alsamixer"
 

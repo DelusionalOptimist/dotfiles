@@ -8,7 +8,7 @@ export ZSH="/home/rudraksh/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gnzh"
+ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -75,6 +75,11 @@ plugins=(
   rust
   jsontools
   docker
+	golang
+	kubectl
+	minikube
+	mesheryctl
+	nvm
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -107,27 +112,22 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export GOPATH="$HOME/go"
-PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin:$GOPATH/bin"
+PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin:$GOPATH/bin:$HOME/dev/osm/bin:$HOME/istio-1.9.4/bin"
 
 alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
 alias vim=nvim
 alias vimr="nvim -R"
+alias notes="nvim ~/Documents/notes"
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 # export BAT_THEME="gruvbox-light"
 export FZF_DEFAULT_OPTS="--bind 'ctrl-f':preview-down,'ctrl-b':preview-up,'ctrl-space':toggle-preview-wrap --cycle"
 
-autoload -U up-line-or-beginning-search
-zle -N up-line-or-beginning-search
+# colourful man pages
+# export MANPAGER=""
+
 bindkey "^[" up-line-or-beginning-search
 
-echo "  ___      _         _               _  ___       _   _       _    _   "
-echo " |   \ ___| |_  _ __(_)___ _ _  __ _| |/ _ \ _ __| |_(_)_ __ (_)__| |_ "
-echo " | |) / -_) | || (_-< / _ \ ' \/ _\` | | (_) | '_ \  _| | '  \| (_-<  _|"
-echo " |___/\___|_|\_,_/__/_\___/_||_\__,_|_|\___/| .__/\__|_|_|_|_|_/__/\__|"
-echo "                                            |_|                        "
-
-neofetch
-compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/nvm/init-nvm.sh

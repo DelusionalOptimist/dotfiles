@@ -5,9 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf.vim'
 
-" session restore
-Plug 'tpope/vim-obsession'
-
 " for git
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -24,6 +21,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'dracula/vim',{'as':'dracula'}
 Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
+Plug 'folke/tokyonight.nvim'
 
 " file/language specific
 Plug 'mhinz/vim-crates'
@@ -37,6 +35,9 @@ Plug 'preservim/tagbar'
 
 " Plugins whose importance I have not realized yet
 Plug 'mhinz/vim-grepper'
+
+" I'm sick of buffers eating my memory
+Plug 'Asheq/close-buffers.vim'
 
 call plug#end()
 
@@ -67,8 +68,14 @@ set cursorline
 set shortmess=c
 set foldmethod=expr
 set completeopt+=menuone,noselect
+set nobackup " We have vcs, we don't need backups.
+set nowritebackup " We have vcs, we don't need backups.
+set noswapfile " They're just annoying. Who likes them?
+set ignorecase
+set smartcase
 
 syntax on
+filetype plugin indent on
 
 " leader key mappings
 let mapleader="\<space>"
@@ -102,11 +109,10 @@ nmap <silent> <c-h> :wincmd h <cr>
 nmap <silent> <c-l> :wincmd l <cr>
 
 "keymaps for plugins
-nnoremap <leader>o :Obsess<cr>
-nnoremap <leader>o! :Obsess!<cr>
+nnoremap <silent> <leader>bm :Bdelete menu<CR>
 
-map <C-p> :Files<cr>
-map <C-m> :Marks<cr>
+map <leader>p :Files<cr>
+map <leader>m :Marks<cr>
 map <leader>bt :BTags<cr>
 map <leader>t :Tags<cr>
 
@@ -115,9 +121,6 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
 	ensure_installed = "maintained",
 	highlight = {
-		enable = true,
-	},
-	indent = {
 		enable = true,
 	},
 	incremental_selection = {
@@ -201,12 +204,12 @@ endfunction
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" chained fallback completion
-"let g:mucomplete#enable_auto_at_startup = 1
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 "current theme
-colorscheme gruvbox
-"set bg=dark
+let g:tokyonight_style = "storm"
+colorscheme tokyonight
+set bg=dark
 
 " highlight whitespaces
 if !(&filetype == "txt")
