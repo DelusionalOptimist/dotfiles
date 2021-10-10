@@ -23,12 +23,11 @@ Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
 Plug 'folke/tokyonight.nvim'
 
-" file/language specific
-Plug 'mhinz/vim-crates'
-
 " fancy stuff
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
+
+Plug 'rexagod/samwise.nvim'
 
 " I don't use this much
 Plug 'preservim/tagbar'
@@ -88,15 +87,6 @@ nnoremap <leader>w :update<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :q!<cr>
 
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-"TODO: configure these better
-"inoremap [ []<left>
-"inoremap { {}<left>
-"inoremap {<CR> {<CR>}<ESC>0
-"inoremap {;<CR> {<CR>};<ESC>0
-
 " general keymaps
 noremap <Up> <nop>
 noremap <Left> <nop>
@@ -115,6 +105,7 @@ map <leader>p :Files<cr>
 map <leader>m :Marks<cr>
 map <leader>bt :BTags<cr>
 map <leader>t :Tags<cr>
+map <leader>l :Lines<cr>
 
 " treesitter config
 lua <<EOF
@@ -164,6 +155,20 @@ nnoremap <Leader>T :TagbarToggle<CR><C-W>l
 " vim-bookmark config
 let g:bookmark_auto_close = 1
 let g:bookmark_location_list = 1
+
+let g:samwise_echo = v:false
+let g:samwise_float = v:true
+
+nnoremap <Leader>p :SamwiseMoveBack<CR>
+nnoremap <Leader>n :SamwiseMoveFwd<CR>
+nnoremap <Leader>s :SamwiseToggleBuffer<CR>
+nnoremap <Leader>S :SamwiseToggleHighlight<CR>
+
+"function! OpenSamwiseBlankLine()
+"	let cur_line = line('.')
+"	execute ':SamwiseToggleBuffer'
+"	call BlankDown(cur_line)
+"endfunction
 
 " coc specific configuration
 nmap <silent> gd :sp<CR><Plug>(coc-definition)

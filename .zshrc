@@ -70,16 +70,13 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	archlinux
-  rustup
-  rust
-  jsontools
   docker
 	golang
 	kubectl
 	minikube
 	mesheryctl
-	nvm
+	heroku
+	doctl
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -112,12 +109,16 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export GOPATH="$HOME/go"
-PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin:$GOPATH/bin:$HOME/dev/osm/bin:$HOME/istio-1.9.4/bin"
+PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin:$GOPATH/bin:$HOME/dev/osm/bin:$HOME/.krew/bin"
 
-alias wgcf="~/wgcf/wgcf_2.1.4_linux_amd64"
+alias wgcf="~/wgcf/wgcf_*"
 alias vim=nvim
 alias vimr="nvim -R"
 alias notes="nvim ~/Documents/notes"
+alias vboxmanage="VBoxManage"
+alias gmsvc="kubectl get svc meshery -n meshery -o jsonpath='{.status..ip}':9081 | xclip -i -select clipboard"
+alias swagger="docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
+
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 # export BAT_THEME="gruvbox-light"
@@ -126,8 +127,10 @@ export FZF_DEFAULT_OPTS="--bind 'ctrl-f':preview-down,'ctrl-b':preview-up,'ctrl-
 # colourful man pages
 # export MANPAGER=""
 
-bindkey "^[" up-line-or-beginning-search
-
+# keybinds
+bindkey "\ep" up-line-or-beginning-search
+bindkey "\en" down-line-or-beginning-search
+bindkey -s "\et" 'tmux^M'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/share/nvm/init-nvm.sh

@@ -31,10 +31,10 @@ bindsym $mod+Ctrl+backslash exec --no-startup-id pactl set-sink-mute @DEFAULT_SI
 bindsym $mod+Ctrl+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # take a screenshot with shotgun
-bindsym $mod+p exec --no-startup-id shotgun ~/Pictures/Screenshots/$(date +%s).png
+bindsym $mod+Shift+p exec --no-startup-id shotgun ~/Pictures/$(date +%s).png -g 1365x516+1+98
 
 # take an interactive screenshot with flameshot
-bindsym $mod+Shift+p exec --no-startup-id sleep 2 && flameshot gui
+bindsym $mod+p exec --no-startup-id sleep 2 && flameshot gui
 
 # use textshot to find text on the screen
 bindsym $mod+o exec --no-startup-id sleep 2 && python3 $HOME/builds/textshot/textshot.py
@@ -44,9 +44,9 @@ bindsym $mod+Shift+s exec --no-startup-id "firefox -new-window https://open.spot
 for_window [title="^Spotify"] move scratchpad, resize set 996 720
 
 # keybindings for media player control (only for interfaces which implement MediaPlayer2 Interface)
-bindsym $mod+Ctrl+bracketleft exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym $mod+Ctrl+apostrophe exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym $mod+Ctrl+bracketright exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym $mod+Ctrl+bracketleft exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1 | sed -n 1p$'\n'` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym $mod+Ctrl+apostrophe exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1 | sed -n 1p$'\n'` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym $mod+Ctrl+bracketright exec --no-startup-id "dbus-send --type=method_call --dest=`busctl --user list | grep 'org.mpris.MediaPlayer2.' | cut -d ' ' -f1 | sed -n 1p$'\n'` /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -176,6 +176,19 @@ bindsym $mod+semicolon exec --no-startup-id i3-msg workspace $(($(i3-msg -t get_
 # move focussed window to a new workspace
 bindsym $mod+apostrophe exec --no-startup-id i3-msg move window workspace $(($(i3-msg -t get_workspaces | sed -n 's/.*"num":\([0-9]*\).*/\1/p') + 1))
 
+# fixed workspaces on different monitors
+workspace 3 output DP1
+workspace 4 output DP1
+workspace 1 output eDP1
+workspace 2 output eDP1
+
+# I generally tend to this all the time so I've added it here
+# workspace 2 and 3 are ssh/tmux
+assign [title="Firefox$"] 1
+assign [title="^Slack"] 2
+assign [title="^Discord"] 2
+assign [title="^Signal"] 2
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -196,8 +209,8 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -242,7 +255,7 @@ bar
         bindsym button5 workspace next_on_output
 }
 
-#workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth yes
 
 # border colors
 # class									border  backgr. text    indicat child_border
