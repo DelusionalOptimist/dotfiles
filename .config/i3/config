@@ -185,9 +185,11 @@ workspace 2 output eDP1
 # I generally tend to this all the time so I've added it here
 # workspace 2 and 3 are ssh/tmux
 assign [title="Firefox$"] 1
-assign [title="^Slack"] 2
-assign [title="^Discord"] 2
-assign [title="^Signal"] 2
+assign [title="^Slack"] 4
+assign [title="^Discord"] 4
+assign [title="^Signal"] 4
+assign [title="^Clickup"] 4
+assign [title="^Zoom"] 5
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -265,3 +267,5 @@ client.unfocused				#282828 #282828 #d65d0e #2e9ef4 #282828
 
 bindsym $mod+Shift+m move scratchpad
 bindsym $mod+Shift+a scratchpad show
+
+bindsym $mod+Ctrl+s sticky toggle

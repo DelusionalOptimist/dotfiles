@@ -32,9 +32,23 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# spoilt by virtual consoles, I like it fast
 xset r rate 500 33
+
+# set background
 hsetroot -solid "#504945"
+
+# caps -> ctrl
 setxkbmap -option ctrl:nocaps
+
+# enable mouse single tap
+xinput set-prop 13 320 1
+
+# indicates if there's a 🦇 around
 batsignal -b -n BAT1 -w 55 -e
+
+# compositor
 picom &
+
+# window manager
 exec i3

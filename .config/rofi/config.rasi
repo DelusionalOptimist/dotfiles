@@ -11,7 +11,7 @@ configuration {
   //COMMAND LINE OPTIONS
   terminal:                       "alacritty";
   show-icons:                     true;
-  theme:                          "~/.config/rofi/boring.rasi";
   font:                           "Meslo LG M DZ Bold 10";
   lines:                          10;
 }
+@theme                          "~/.config/rofi/boring.rasi"
