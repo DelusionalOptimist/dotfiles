@@ -1,0 +1,5 @@
+[user]
+	email = rudraksh@accuknox.com
+
+[commit]
+	gpgsign=false

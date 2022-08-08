@@ -42,7 +42,8 @@ hsetroot -solid "#504945"
 setxkbmap -option ctrl:nocaps
 
 # enable mouse single tap
-xinput set-prop 13 320 1
+xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1
 
 # indicates if there's a 🦇 around
 batsignal -b -n BAT1 -w 55 -e

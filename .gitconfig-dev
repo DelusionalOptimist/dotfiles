@@ -1,0 +1,6 @@
+[user]
+	email = rudrakshpareek3601@gmail.com
+	signingkey = 1F93E2B6D5F0990C
+
+[commit]
+	gpgsign = true

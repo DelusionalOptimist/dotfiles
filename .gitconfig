@@ -1,23 +1,33 @@
 [user]
-	email = rudrakshpareek3601@gmail.com
 	name = Rudraksh Pareek
+	email = rudrakshpareek3601@gmail.com
 	signingkey = 1F93E2B6D5F0990C
+
+[commit]
+	gpgsign = true
+
+[includeIf "gitdir:accuknox/"]
+  path = .gitconfig-accuknox
 
 [alias]
 	gclone = !sh -c 'git clone `xclip -o`'
-
-[commit]
-  gpgsign = true
 
 [core]
   pager = delta
 
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --side-by-side --wrap-max-lines="unlimited" --max-line-length=0 --color-only
 
 [delta]
   features = side-by-side line-numbers decorations
+	side-by-side = true
+	wrap-max-lines = "unlimited"
+	max-line-length = 0
+	wrap-right-percent = 1
   whitespace-error-style = 22 reverse
+
+[merge]
+	conflictstyle = diff3
 
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul

@@ -15,6 +15,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " autocompletion engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Make neovim a markdown editor
+Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
+
 Plug 'MattesGroeger/vim-bookmarks'
 
 " themes
@@ -110,7 +113,7 @@ map <leader>l :Lines<cr>
 " treesitter config
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = "maintained",
+	ensure_installed = {"go", "lua", "java", "rust", "json", "c", "cpp", "bash"},
 	highlight = {
 		enable = true,
 	},
@@ -120,34 +123,38 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+" glow.nvim configuration
+let g:glow_use_pager = v:true
+let g:glow_style = "dark"
+
 " gotags config for tagbar
-let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-\ }
+"let g:tagbar_type_go = {
+"	\ 'ctagstype' : 'go',
+"	\ 'kinds'     : [
+"		\ 'p:package',
+"		\ 'i:imports:1',
+"		\ 'c:constants',
+"		\ 'v:variables',
+"		\ 't:types',
+"		\ 'n:interfaces',
+"		\ 'w:fields',
+"		\ 'e:embedded',
+"		\ 'm:methods',
+"		\ 'r:constructor',
+"		\ 'f:functions'
+"	\ ],
+"	\ 'sro' : '.',
+"	\ 'kind2scope' : {
+"		\ 't' : 'ctype',
+"		\ 'n' : 'ntype'
+"	\ },
+"	\ 'scope2kind' : {
+"		\ 'ctype' : 't',
+"		\ 'ntype' : 'n'
+"	\ },
+"	\ 'ctagsbin'  : 'gotags',
+"	\ 'ctagsargs' : '-sort -silent'
+"\ }
 
 let g:netrw_liststyle = 3
 nnoremap <Leader>T :TagbarToggle<CR><C-W>l
@@ -156,13 +163,13 @@ nnoremap <Leader>T :TagbarToggle<CR><C-W>l
 let g:bookmark_auto_close = 1
 let g:bookmark_location_list = 1
 
-let g:samwise_echo = v:false
-let g:samwise_float = v:true
-
-nnoremap <Leader>p :SamwiseMoveBack<CR>
-nnoremap <Leader>n :SamwiseMoveFwd<CR>
-nnoremap <Leader>s :SamwiseToggleBuffer<CR>
-nnoremap <Leader>S :SamwiseToggleHighlight<CR>
+"let g:samwise_echo = v:false
+"let g:samwise_float = v:true
+"
+"nnoremap <Leader>p :SamwiseMoveBack<CR>
+"nnoremap <Leader>n :SamwiseMoveFwd<CR>
+"nnoremap <Leader>s :SamwiseToggleBuffer<CR>
+"nnoremap <Leader>S :SamwiseToggleHighlight<CR>
 
 "function! OpenSamwiseBlankLine()
 "	let cur_line = line('.')

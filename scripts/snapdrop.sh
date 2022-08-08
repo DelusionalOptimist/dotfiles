@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+# THIS IS ONLY FOR A SINGLE INSTANCE. USE IT AT YOUR OWN RISK.
+
 main() {
 	CONFIG=$HOME/.config/doctl/snapdrop.config
 	if [[ -f "$CONFIG" ]]; then
