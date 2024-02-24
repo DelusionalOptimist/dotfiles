@@ -21,9 +21,9 @@ Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
 Plug 'MattesGroeger/vim-bookmarks'
 
 " themes
-Plug 'dracula/vim',{'as':'dracula'}
+"Plug 'dracula/vim',{'as':'dracula'}
 Plug 'morhetz/gruvbox'
-Plug 'haishanh/night-owl.vim'
+"Plug 'haishanh/night-owl.vim'
 Plug 'folke/tokyonight.nvim'
 
 " fancy stuff
@@ -89,6 +89,10 @@ nnoremap <leader>ts :%s/\s\+$//e<cr>
 nnoremap <leader>w :update<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :q!<cr>
+
+nnoremap <leader>\| :vsplit<cr>
+nnoremap <leader>" :split<cr>
+nnoremap <leader>i :Windows<cr>
 
 " general keymaps
 noremap <Up> <nop>
@@ -202,12 +206,12 @@ vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -219,9 +223,8 @@ nmap <leader>f  <Plug>(coc-format-selected)
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 "current theme
-let g:tokyonight_style = "storm"
-colorscheme tokyonight
-set bg=dark
+colorscheme tokyonight-storm
+"set bg=dark
 
 " highlight whitespaces
 if !(&filetype == "txt")

@@ -2,13 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/rudraksh/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="aussiegeek"
 ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
@@ -24,17 +23,16 @@ ZSH_THEME="ys"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -46,6 +44,9 @@ ZSH_THEME="ys"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -71,20 +72,21 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-  docker
+	docker
 	golang
 	kubectl
 	minikube
-	mesheryctl
-	heroku
-	doctl
-	docker-compose
-	karmor
-	)
+	kind
+	kubebuilder
+	helm
+	pip
+	aws
+)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -112,30 +114,49 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export GOPATH="$HOME/go"
-PATH="$PATH:$HOME/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin:$GOPATH/bin:$HOME/dev/osm/bin:$HOME/.krew/bin:$(pyenv root)/shims:/usr/lib/jvm/java-11-openjdk/bin:/var/lib/snapd/snap/bin"
+PATH="$PATH:$GOPATH/bin:$HOME/.local/bin"
 
-alias wgcf="~/wgcf/wgcf"
 alias vim=nvim
-alias vimr="nvim -R"
-alias notes="nvim ~/Documents/notes"
-alias vboxmanage="VBoxManage"
-alias gmsvc="kubectl get svc meshery -n meshery -o jsonpath='{.status..ip}':9081 | xclip -i -select clipboard"
-alias swagger="docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
+alias vagrant-up="NETNEXT=1 make --environment-overrides vagrant-up"
+alias vagrant-ssh="NETNEXT=1 make --environment-overrides vagrant-ssh"
+alias vagrant-halt="NETNEXT=1 make --environment-overrides vagrant-halt"
+alias vagrant-destroy="NETNEXT=1 make --environment-overrides vagrant-destroy"
+alias n="neofetch"
 
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
-# export BAT_THEME="gruvbox-light"
 export FZF_DEFAULT_OPTS="--bind 'ctrl-f':preview-down,'ctrl-b':preview-up,'ctrl-space':toggle-preview-wrap --cycle"
 
-# colourful man pages
-# export MANPAGER=""
-
-# keybinds
 bindkey "\ep" up-line-or-beginning-search
 bindkey "\en" down-line-or-beginning-search
 bindkey -s "\et" 'tmux^M'
 
+# for unbinding ctrl+w
+#stty werase undef
+#bindkey -r "\C-w"
+#bindkey "\e\C-w" backward-kill-word
+
+function make-vagrant () {
+	#if [[ "$PWD" =~ "$HOME/dev/KubeArmor" ]]; then
+	#	echo "in dev"
+	#	make vagrant-${1}
+	#else
+	#	echo "not in dev"
+	#	NETNEXT=1 make --environment-overrides vagrant-${1}
+	#fi
+	echo "not in dev"
+	NETNEXT=1 make --environment-overrides vagrant-${1}
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/nvm/init-nvm.sh
-eval "$(pyenv init -)"
-source <(kubectl completion zsh)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/rudraksh/accuknox/google-cloud-sdk/path.zsh.inc' ]; then . '/home/rudraksh/accuknox/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/rudraksh/accuknox/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/rudraksh/accuknox/google-cloud-sdk/completion.zsh.inc'; fi
+
+eval "$(direnv hook zsh)"
+
+# managing dotfiles
+alias dm='git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME'

@@ -1,0 +1,11 @@
+decoration, window, window.background, window.titlebar, * {
+	border-radius: 0px;
+}
+window.titlebar, window.headerbar {
+	background: #000000;
+	color:white;
+}
+window.titlebar:backdrop, window.headerbar:backdrop {
+	background: #000000;
+	color:white;
+}
