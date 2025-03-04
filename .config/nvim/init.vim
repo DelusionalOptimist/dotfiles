@@ -20,6 +20,8 @@ Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
 
 Plug 'MattesGroeger/vim-bookmarks'
 
+Plug 'preservim/nerdtree'
+
 " themes
 "Plug 'dracula/vim',{'as':'dracula'}
 Plug 'morhetz/gruvbox'
@@ -107,12 +109,23 @@ nmap <silent> <c-l> :wincmd l <cr>
 
 "keymaps for plugins
 nnoremap <silent> <leader>bm :Bdelete menu<CR>
+nnoremap <silent> <leader>ba :BookmarkAnnotate<CR>
+nnoremap <silent> <leader>bs :BookmarkShowAll<CR>
+nnoremap <silent> <leader>bc :BookmarkClear<CR>
 
 map <leader>p :Files<cr>
 map <leader>m :Marks<cr>
 map <leader>bt :BTags<cr>
 map <leader>t :Tags<cr>
 map <leader>l :Lines<cr>
+
+"nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>E :NERDTree<CR>
+nnoremap <leader>' :NERDTreeToggle<CR>
+nnoremap <leader>/ :NERDTreeFind<CR>
+
+map <leader>G :Glow<cr>
 
 " treesitter config
 lua <<EOF
@@ -231,3 +244,7 @@ if !(&filetype == "txt")
 	highlight WhiteSpaces ctermbg=green guibg=#55aa55
 	match WhiteSpaces /\s\+$/
 endif
+
+lua << EOF
+require('glow').setup()
+EOF

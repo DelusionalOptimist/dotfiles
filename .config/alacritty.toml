@@ -1,4 +1,4 @@
-import = [
+general.import = [
 	"~/.config/alacritty/themes/themes/tokyo_night_storm.toml"
 ]
 
@@ -155,7 +155,7 @@ size = 11.8
 [scrolling]
 history = 10000
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 
 [window]

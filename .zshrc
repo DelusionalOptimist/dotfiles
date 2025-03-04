@@ -81,6 +81,7 @@ plugins=(
 	helm
 	pip
 	aws
+	oc
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -122,6 +123,8 @@ alias vagrant-ssh="NETNEXT=1 make --environment-overrides vagrant-ssh"
 alias vagrant-halt="NETNEXT=1 make --environment-overrides vagrant-halt"
 alias vagrant-destroy="NETNEXT=1 make --environment-overrides vagrant-destroy"
 alias n="neofetch"
+alias ra="ranger"
+alias glow="glow --pager"
 
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
@@ -148,15 +151,43 @@ function make-vagrant () {
 	NETNEXT=1 make --environment-overrides vagrant-${1}
 }
 
+function drmc() {
+	if [[ -z ${1} ]]; then
+		echo "need an argument"
+		return 1
+	fi
+	docker stop $(docker ps -a | grep "${1}" | sed 's/\s/:/g' | tr -s ':' | cut -d ':' -f1)
+	docker rm --force $(docker ps -a | grep "${1}" | sed 's/\s/:/g' | tr -s ':' | cut -d ':' -f1)
+}
+
+function drmi() {
+	if [[ -z ${1} ]]; then
+		echo "need an argument"
+		return 1
+	fi
+	docker rmi --force $(docker images | grep "${1}" | sed 's/\s/:/g' | tr -s ':' | cut -d ':' -f3)
+}
+
+function idt-login() {
+	wl-copy -o $(cat ~/accuknox/secrets/idt-raw)
+	sshpass -f $HOME/accuknox/secrets/idt-raw ssh -p 666 ziggy@dlz81euo2zj.d.firewalla.org -t "sudo su -l -c 'tmux a'"
+}
+
+function idt-ports() {
+	sudo sshpass -f ~/accuknox/secrets/idt-raw ssh -p 666 ziggy@dlz81euo2zj.d.firewalla.org -T -L localhost:80:localhost:80 -L localhost:8034:localhost:8034 -L localhost:8888:localhost:8888 -L localhost:8080:localhost:8080 -L localhost:5900:localhost:5900
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/rudraksh/accuknox/google-cloud-sdk/path.zsh.inc' ]; then . '/home/rudraksh/accuknox/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/rudraksh/accuknox/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/rudraksh/accuknox/google-cloud-sdk/completion.zsh.inc'; fi
 
 eval "$(direnv hook zsh)"
 
 # managing dotfiles
 alias dm='git --git-dir=$HOME/.config/dotfiles.git --work-tree=$HOME'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/rudraksh/builds/google-cloud-sdk/path.zsh.inc' ]; then . '/home/rudraksh/builds/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/rudraksh/builds/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/rudraksh/builds/google-cloud-sdk/completion.zsh.inc'; fi
+
+export CERN_HOME="$HOME/cern"

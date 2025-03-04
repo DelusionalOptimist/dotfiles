@@ -34,6 +34,7 @@ ShowInstallerIsoInfo() {
 alias ls='ls --color=auto'
 alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles except "."
+alias vim=nvim
 
 [[ "$(whoami)" = "root" ]] && return
 
@@ -95,4 +96,4 @@ RESET="\[$(tput sgr0)\]"
 #PS1="${GREEN}CryptoBro${RESET}@${BLUE}JackedMiningMachine ${RESET}\W ${CRYPTO}₿${RESET} "
 #
 PS1="${GREEN}\u${RESET}@${BLUE}\h${RESET} ${AQUA}\w${RESET} ${CRYPTO}₿${RESET} "
-export KUBECONFIG=/home/rudraksh/.kube/config
+export PATH=$PATH:$HOME/.local/bin

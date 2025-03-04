@@ -6,8 +6,17 @@
 [commit]
 	gpgsign = true
 
+[url "ssh://git@gitlab.cern.ch:7999/"]
+	insteadOf = https://gitlab.cern.ch/
+
+[url "ssh://git@github.com/"]
+	pushInsteadOf = https://github.com/
+
 [includeIf "gitdir:accuknox/"]
   path = .gitconfig-accuknox
+
+[includeIf "gitdir:cern/"]
+  path = .gitconfig-cern
 
 [alias]
 	gclone = !sh -c 'git clone `xclip -o`'
@@ -35,5 +44,4 @@
   file-decoration-style = none
 [init]
 	defaultBranch = main
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+
